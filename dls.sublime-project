@@ -2,6 +2,15 @@
 	"build_systems":
 	[
 		{
+			"cmd":
+			[
+				"bash",
+				"runserver.sh"
+			],
+			"name": "Run Server",
+			"working_dir": "${project_path}"
+		},
+		{
 			"file_regex": "^[ ]*File \"(...*?)\", line ([0-9]*)",
 			"name": "Anaconda Python Builder",
 			"selector": "source.python",
