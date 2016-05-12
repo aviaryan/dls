@@ -28,8 +28,8 @@ def serve(strId):
         return render_template('display_data.html', type=status, text=getText(strId))
 
 
-@app.route('/<strId>/text/', methods=['GET', 'POST'])
-def addText(strId):
+@app.route('/<strId>/edit/', methods=['GET', 'POST'])
+def addData(strId):
     if request.method == 'POST':
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
@@ -44,3 +44,14 @@ def addText(strId):
         if data is None:
             data = {}
         return render_template('form_text.html', data=data)
+
+
+@app.route('/<strId>/file/', methods=['GET', 'POST'])
+def addText(strId):
+    if request.method == 'POST':
+        file = request.files['file']
+        print file.filename
+        print file.read()
+        return 'hi'
+    else:
+        return render_template('form_text')
