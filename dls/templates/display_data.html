@@ -7,17 +7,15 @@
 
 <h1>DLS</h1>
 <br>
-<a href="text"><button class="change">Add Text</button></a>
-<a href="file"><button class="change">Add File</button></a>
+<a href="edit"><button class="change">Edit</button></a>
 <br><br>
 
 {% if type==0 %}
 Got Nothing
-{% elif type==1 %}
+{% else %}
 <pre><code>
 {{ text }}
 </code></pre>
-{% else %}
 File
 {% endif %}
 

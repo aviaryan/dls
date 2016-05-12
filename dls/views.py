@@ -1,7 +1,9 @@
 from dls import app, db
-from flask import url_for, redirect, request, render_template
+from flask import url_for, redirect, request, render_template, send_file
+import io
 from models import Data
 from utils import *
+import binascii
 
 
 @app.route('/')
@@ -14,44 +16,46 @@ def about():
     return 'This service was created by Avi Aryan as an attempt to learn Flask'
 
 
-@app.route('/<strId>/', methods=['POST', 'GET'])
+@app.route('/<strId>/')
 def serve(strId):
-    if request.method == 'POST':
-        servType = request.form['type']
-        if servType == 'file':
-            pass
-        elif servType == 'text':
-            pass
-        return redirect(url_for('serve', strId=strId))
-    else:
-        status = getType(strId)
-        return render_template('display_data.html', type=status, text=getText(strId))
+    status = getType(strId)
+    return render_template('display_data.html', type=status, text=getText(strId))
 
 
 @app.route('/<strId>/edit/', methods=['GET', 'POST'])
-def addData(strId):
+def addText(strId):
     if request.method == 'POST':
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
             data.text = request.form['text']
         else:
-            data = Data(strId=strId, text=request.form['text'], dataType=1)
+            data = Data(strId=strId, text=request.form['text'])
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('serve', strId=strId))
     else:
         data = Data.query.filter_by(strId=strId).first()
         if data is None:
-            data = {}
-        return render_template('form_text.html', data=data)
+            data = {'strId': strId}
+        return render_template('edit_form.html', data=data)
 
 
 @app.route('/<strId>/file/', methods=['GET', 'POST'])
-def addText(strId):
+def uploadFile(strId):
     if request.method == 'POST':
         file = request.files['file']
-        print file.filename
-        print file.read()
-        return 'hi'
+        k = binascii.b2a_base64(file.read())
+        data = Data.query.filter_by(strId=strId).first()
+        if data is not None:
+            data.filename = file.filename
+            data.fileblob = k
+        else:
+            data = Data(strId=strId, filename=file.filename, fileblob=k)
+        db.session.add(data)
+        db.session.commit()
+        return redirect(url_for('serve', strId=strId))
     else:
-        return render_template('form_text')
+        data = Data.query.filter_by(strId=strId).first()
+        return send_file(io.BytesIO(binascii.a2b_base64(data.fileblob)), 
+            attachment_filename=data.filename, 
+            mimetype='image/png')
