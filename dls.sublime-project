@@ -2,9 +2,8 @@
 	"build_systems":
 	[
 		{
-			
-			"shell_cmd": "gnome-terminal -e \"bash runserver.sh\"",
 			"name": "Run Server",
+			"shell_cmd": "gnome-terminal -e \"bash runserver.sh\"",
 			"working_dir": "${project_path}"
 		}
 	],
