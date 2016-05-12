@@ -1,5 +1,5 @@
 from dls import app
-from flask import url_for, redirect, request
+from flask import url_for, redirect, request, render_template
 
 
 @app.route('/')
@@ -22,4 +22,4 @@ def serve(strId):
             pass
         return redirect(url_for('serve', strId=strId))
     else:
-        return 'Hello %s' % strId
+        return render_template('display_data.html', type=0)

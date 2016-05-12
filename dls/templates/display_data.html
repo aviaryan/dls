@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<title>DLS</title>
+</head>
+<body>
+
+<h1>DLS</h1>
+<br>
+<button class="change">Change</button>
+<br><br>
+
+{% if type==0 %}
+Got Nothing
+{% elif type==1 %}
+<pre><code>
+{{ text }}
+</code></pre>
+{% else %}
+File
+{% endif %}
+
+</body>
+</html>
