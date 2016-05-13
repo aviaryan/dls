@@ -18,8 +18,8 @@ class ProductionConfig(Config):
 
 
 class HerokuConfig(ProductionConfig):
-    #SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/dls'
-    pass
+    DEBUG = True
+    # SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/dls'
 
 
 class SQLiteConfig(Config):
