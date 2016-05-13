@@ -1,11 +1,7 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
-	<title>Edit {{ data.strId }} DLS</title>
-</head>
-<body>
-
+{% extends "base.html" %}
+{% block pagetitle %}Edit {{ data.strId }}{% endblock %}
+{% block header %}{% endblock %}
+{% block content %}
 <p>
 <h2>Text</h2>
 <form action="" method="POST">
@@ -27,6 +23,4 @@
 </form>
 <small>(Current = {% if data.filename %}{{data.filename}}{% else %}None{% endif %})</small>
 </p>
-
-</body>
-</html>
+{% endblock %}

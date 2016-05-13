@@ -1,12 +1,6 @@
-<!DOCTYPE html>
-<html>
-<head>
-	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
-	<title>DLS</title>
-</head>
-<body>
-
-<h1>DLS</h1>
+{% extends "base.html" %}
+{% block pagetitle %}{{ data.strId }}{% endblock %}
+{% block content %}
 <a href="edit"><button class="edit">Update</button></a>
 <br><br>
 
@@ -24,6 +18,4 @@ Nothing here. Click on the button above to add something.
 <pre>{{ data.text if data.text != None }}</pre>
 
 {% endif %}
-
-</body>
-</html>
+{% endblock %}

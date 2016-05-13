@@ -7,6 +7,11 @@ button.edit {
 	font-size: 1.1em;
 }
 
+h1 a {
+	text-decoration: none;
+	color: inherit;
+}
+
 pre {
 	padding: 1em;
 	width: 100%;
