@@ -14,7 +14,7 @@ class LocalConfig(Config):
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://project:project@localhost/dls')
 
 
 class HerokuConfig(ProductionConfig):
