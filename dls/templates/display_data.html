@@ -7,19 +7,20 @@
 <body>
 
 <h1>DLS</h1>
-<br>
-<a href="edit"><button class="edit">Edit</button></a>
+<a href="edit"><button class="edit">Update</button></a>
 <br><br>
 
 {% if type==0 %}
-Got Nothing
+Nothing here. Click on the button above to add something.
 {% else %}
 <!-- data -->
-File {{ data.filename }} 
+<h4>File</h4>
+<span class="filename">{{ data.filename }}</span>
 {% if data.filename %}
 (<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>)
 {% endif %}
 <!-- text -->
+<h4>Text</h4>
 <pre>{{ data.text }}</pre>
 
 {% endif %}

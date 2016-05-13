@@ -14,3 +14,7 @@ pre {
 	max-height: 300px;
 	overflow: scroll;
 }
+
+.filename {
+	font-family: monospace;
+}
