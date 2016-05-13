@@ -2,10 +2,12 @@
 {% block pagetitle %}Edit {{ data.strId }}{% endblock %}
 {% block header %}{% endblock %}
 {% block content %}
+<a href="../">← Back</a><br>
+
 <p>
 <h2>Text</h2>
 <form action="" method="POST">
-<textarea id="text" name="text" rows="20" cols="70">{{ data.text if data.text != None }}</textarea>
+<textarea id="text" name="text" rows="15" cols="70">{{ data.text if data.text != None }}</textarea>
 <br>
 <input type="submit" value="Save">
 </form>
