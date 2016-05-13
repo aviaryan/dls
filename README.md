@@ -33,3 +33,9 @@ heroku pg:promote HEROKU_POSTGRESQL_COLOR_URL # change DATABASE_URL to heroku's 
 ```
 
 Done
+
+
+### Thanks
+
+* https://realpython.com/blog/python/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/
+* http://blog.sahildiwan.com/posts/flask-and-postgresql-app-deployed-on-heroku/
