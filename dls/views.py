@@ -7,7 +7,7 @@ import binascii
 
 @app.route('/')
 def index():
-    return 'Hello World! This is war'
+    return render_template('home.html')
 
 
 @app.errorhandler(404)
