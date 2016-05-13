@@ -7,12 +7,7 @@ import binascii
 
 @app.route('/')
 def index():
-    return 'Hello World!'
-
-
-@app.route('/about/')
-def about():
-    return 'This service was created by Avi Aryan as an attempt to learn Flask'
+    return 'Hello World! This is war'
 
 
 @app.errorhandler(404)

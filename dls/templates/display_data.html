@@ -14,12 +14,13 @@
 {% if type==0 %}
 Got Nothing
 {% else %}
-
-<pre>{{ data.text }}</pre>
+<!-- data -->
 File {{ data.filename }} 
 {% if data.filename %}
 (<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>)
 {% endif %}
+<!-- text -->
+<pre>{{ data.text }}</pre>
 
 {% endif %}
 

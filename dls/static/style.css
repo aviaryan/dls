@@ -4,12 +4,13 @@ body {
 }
 
 button.edit {
-	font-size: 1.2em;
+	font-size: 1.1em;
 }
 
 pre {
+	padding: 1em;
 	width: 100%;
-	background: #CCCCCC;
+	background: #DDDDDD;
 	max-height: 300px;
 	overflow: scroll;
 }
