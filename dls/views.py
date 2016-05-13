@@ -44,9 +44,8 @@ def dataFile(strId):
     if request.method == 'POST':
         file = request.files['file']
         filedata = file.read()
-
         # if size limit exceeds
-        if len(filedata) > MAX_UPLOAD_SIZE:
+        if len(filedata) > MAX_UPLOAD_SIZE or len(filedata) == 0:
             # TODO: Flash something
             return redirect(url_for('editData', strId=strId))
 
