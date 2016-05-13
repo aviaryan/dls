@@ -1,5 +1,5 @@
-from dls import app, db
+from dls import app, db, heroku
 
 
 db.create_all()
-app.run(port=7000, debug=True)
+app.run()

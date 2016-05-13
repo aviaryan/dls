@@ -1,3 +1,5 @@
 Flask
 psycopg2
 Flask-SQLAlchemy
+Flask-Heroku
+gunicorn

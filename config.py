@@ -17,5 +17,10 @@ class ProductionConfig(Config):
     SQLALCHEMY_DATABASE_URI = os.environ['DATABASE_URL']
 
 
+class HerokuConfig(ProductionConfig):
+    #SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/dls'
+    pass
+
+
 class SQLiteConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.sqlite3'
