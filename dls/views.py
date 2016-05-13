@@ -40,6 +40,12 @@ def addText(strId):
         return render_template('edit_form.html', data=data)
 
 
+@app.route('/<strId>/file/<filename>')
+def downloadFile(strId, filename):
+    data = Data.query.filter_by(strId=strId).first()
+    return send_file(io.BytesIO(binascii.a2b_base64(data.fileblob)), attachment_filename=filename, mimetype='image/png')
+
+
 @app.route('/<strId>/file/', methods=['GET', 'POST'])
 def uploadFile(strId):
     if request.method == 'POST':
@@ -56,6 +62,4 @@ def uploadFile(strId):
         return redirect(url_for('serve', strId=strId))
     else:
         data = Data.query.filter_by(strId=strId).first()
-        return send_file(io.BytesIO(binascii.a2b_base64(data.fileblob)), 
-            attachment_filename=data.filename, 
-            mimetype='image/png')
+        return redirect(url_for('downloadFile', strId=strId, filename=data.filename))
