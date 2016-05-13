@@ -3,8 +3,7 @@ from flask_sqlalchemy import SQLAlchemy
 
 
 app = Flask(__name__)
-app.config['SQLALCHEMY_DATABASE_URI'] = 'sqlite:///../database.sqlite3'
-app.config['SECRET_KEY'] = "random string"
+app.config.from_object('config.LocalConfig')
 db = SQLAlchemy(app)
 
 import dls.views
