@@ -1,5 +1,7 @@
 import os
 
+LOCAL_PSQLDB_URL = 'postgresql://project:project@localhost/dls'
+
 
 class Config(object):
     DEBUG = True
@@ -9,17 +11,16 @@ class Config(object):
 
 
 class LocalConfig(Config):
-    SQLALCHEMY_DATABASE_URI = 'postgresql://project:project@localhost/dls'
+    SQLALCHEMY_DATABASE_URI = LOCAL_PSQLDB_URL
 
 
 class ProductionConfig(Config):
     DEBUG = False
-    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', 'postgresql://project:project@localhost/dls')
+    SQLALCHEMY_DATABASE_URI = os.environ.get('DATABASE_URL', LOCAL_PSQLDB_URL)
 
 
 class HerokuConfig(ProductionConfig):
     DEBUG = True
-    # SQLALCHEMY_DATABASE_URI = 'postgresql://localhost/dls'
 
 
 class SQLiteConfig(Config):
