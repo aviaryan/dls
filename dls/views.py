@@ -1,6 +1,5 @@
 from dls import app, db
-from flask import url_for, redirect, request, render_template, send_file
-import io
+from flask import url_for, redirect, request, render_template, make_response
 from models import Data
 from utils import *
 import binascii
@@ -40,12 +39,6 @@ def addText(strId):
         return render_template('edit_form.html', data=data)
 
 
-@app.route('/<strId>/file/<filename>')
-def downloadFile(strId, filename):
-    data = Data.query.filter_by(strId=strId).first()
-    return send_file(io.BytesIO(binascii.a2b_base64(data.fileblob)), attachment_filename=filename, mimetype='image/png')
-
-
 @app.route('/<strId>/file/', methods=['GET', 'POST'])
 def uploadFile(strId):
     if request.method == 'POST':
@@ -62,4 +55,6 @@ def uploadFile(strId):
         return redirect(url_for('serve', strId=strId))
     else:
         data = Data.query.filter_by(strId=strId).first()
-        return redirect(url_for('downloadFile', strId=strId, filename=data.filename))
+        response = make_response(binascii.a2b_base64(data.fileblob))
+        response.headers['Content-Disposition'] = 'attachment; filename=%s' % data.filename
+        return response
