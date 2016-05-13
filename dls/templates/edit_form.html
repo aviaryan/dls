@@ -2,7 +2,20 @@
 {% block pagetitle %}Edit {{ data.strId }}{% endblock %}
 {% block header %}{% endblock %}
 {% block content %}
-<a href="../">← Back</a><br>
+<a href="../">← Back</a><br><br>
+
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="errors">
+  <b>Errors</b>
+  <ol>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ol>
+  </div>
+  {% endif %}
+{% endwith %}
 
 <p>
 <h2>Text</h2>

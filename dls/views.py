@@ -1,5 +1,5 @@
 from dls import app, db, MAX_UPLOAD_SIZE
-from flask import url_for, redirect, request, render_template, make_response, abort
+from flask import url_for, redirect, request, render_template, make_response, abort, flash
 from models import Data
 from utils import *
 import binascii
@@ -39,15 +39,22 @@ def editData(strId):
         return render_template('edit_form.html', data=data)
 
 
+def flash_to_editData(msg, strId):
+    flash(msg, 'error')
+    return redirect(url_for('editData', strId=strId))
+
+
 @app.route('/<strId>/file/', methods=['GET', 'POST'])
 def dataFile(strId):
     if request.method == 'POST':
         file = request.files['file']
         filedata = file.read()
         # if size limit exceeds
-        if len(filedata) > MAX_UPLOAD_SIZE or len(filedata) == 0:
-            # TODO: Flash something
-            return redirect(url_for('editData', strId=strId))
+        if len(filedata) > MAX_UPLOAD_SIZE:
+            return flash_to_editData('Upload size limit exceeded', strId)
+        # if no file
+        if len(filedata) == 0:
+            return flash_to_editData('No file selected', strId)
 
         b64_file = binascii.b2a_base64(filedata)
         data = Data.query.filter_by(strId=strId).first()
