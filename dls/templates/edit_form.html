@@ -1,12 +1,13 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
 	<title>Edit {{ data.strId }} DLS</title>
 </head>
 <body>
 
 <form action="" method="POST">
-<input type="text" name="text" value="{{ data.text }}">
+<textarea id="text" name="text" rows="20" cols="70">{{ data.text }}</textarea>
 <input type="submit" value="submit">
 </form>
 

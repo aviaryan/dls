@@ -1,0 +1,15 @@
+body {
+	max-width: 800px;
+	margin: 0 auto;
+}
+
+button.edit {
+	font-size: 1.2em;
+}
+
+pre {
+	width: 100%;
+	background: #CCCCCC;
+	max-height: 300px;
+	overflow: scroll;
+}

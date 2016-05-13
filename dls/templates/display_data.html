@@ -1,22 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+	<link href="{{ url_for('static', filename='style.css') }}" rel="stylesheet" />
 	<title>DLS</title>
 </head>
 <body>
 
 <h1>DLS</h1>
 <br>
-<a href="edit"><button class="change">Edit</button></a>
+<a href="edit"><button class="edit">Edit</button></a>
 <br><br>
 
 {% if type==0 %}
 Got Nothing
 {% else %}
-<pre><code>
-{{ data.text }}
-</code></pre>
-File {{ data.filename }}
+
+<pre>{{ data.text }}</pre>
+File {{ data.filename }} 
+{% if data.filename %}
+(<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>)
+{% endif %}
+
 {% endif %}
 
 </body>

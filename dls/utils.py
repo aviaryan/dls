@@ -8,4 +8,4 @@ def getType(strId):
 
 def getData(strId):
     data = Data.query.filter_by(strId=strId).first()
-    return {} if data is None else data
+    return {'strId': strId} if data is None else data

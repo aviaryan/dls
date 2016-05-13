@@ -48,13 +48,13 @@ def editData(strId):
 def dataFile(strId):
     if request.method == 'POST':
         file = request.files['file']
-        k = binascii.b2a_base64(file.read())
+        b64_file = binascii.b2a_base64(file.read())
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
             data.filename = file.filename
-            data.fileblob = k
+            data.fileblob = b64_file
         else:
-            data = Data(strId=strId, filename=file.filename, fileblob=k)
+            data = Data(strId=strId, filename=file.filename, fileblob=b64_file)
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('serve', strId=strId))
