@@ -6,6 +6,6 @@ def getType(strId):
     return 0 if data is None else 1
 
 
-def getText(strId):
+def getData(strId):
     data = Data.query.filter_by(strId=strId).first()
-    return '' if data is None else data.text
+    return {} if data is None else data

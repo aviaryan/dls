@@ -1,5 +1,5 @@
 from dls import app, db
-from flask import url_for, redirect, request, render_template, make_response
+from flask import url_for, redirect, request, render_template, make_response, abort
 from models import Data
 from utils import *
 import binascii
@@ -15,14 +15,19 @@ def about():
     return 'This service was created by Avi Aryan as an attempt to learn Flask'
 
 
+@app.errorhandler(404)
+def page_not_found(error):
+    return 'This page does not exist'
+
+
 @app.route('/<strId>/')
 def serve(strId):
     status = getType(strId)
-    return render_template('display_data.html', type=status, text=getText(strId))
+    return render_template('display_data.html', type=status, data=getData(strId))
 
 
 @app.route('/<strId>/edit/', methods=['GET', 'POST'])
-def addText(strId):
+def editData(strId):
     if request.method == 'POST':
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
@@ -40,7 +45,7 @@ def addText(strId):
 
 
 @app.route('/<strId>/file/', methods=['GET', 'POST'])
-def uploadFile(strId):
+def dataFile(strId):
     if request.method == 'POST':
         file = request.files['file']
         k = binascii.b2a_base64(file.read())
@@ -55,6 +60,8 @@ def uploadFile(strId):
         return redirect(url_for('serve', strId=strId))
     else:
         data = Data.query.filter_by(strId=strId).first()
+        if data is None or data.filename == '':
+            abort(404)
         response = make_response(binascii.a2b_base64(data.fileblob))
         response.headers['Content-Disposition'] = 'attachment; filename=%s' % data.filename
         return response
