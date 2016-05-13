@@ -13,10 +13,10 @@ create database dls with owner=project;
 ```
 Once database is created, use `bash runserver.sh`.
 
-One can also use `python runserver.py`
+One can also use `python runserver.py`.
 
 
-## Setting up Heroku
+## Setting up on Heroku
 
 First set up env vars for this project.
 
