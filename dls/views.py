@@ -12,7 +12,7 @@ def index():
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return 'This page does not exist'
+    return '404. This page does not exist'
 
 
 @app.route('/<strId>/')
