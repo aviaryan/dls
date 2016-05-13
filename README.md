@@ -2,6 +2,12 @@
 
 Direct Link Service
 
+```
+http://bit.do/dlus
+http://bit.ly/dlus000
+http://bit.do/dlus000
+```
+
 
 ## Setting up locally
 
