@@ -9,7 +9,7 @@
 <p>
 <h2>Text</h2>
 <form action="" method="POST">
-<textarea id="text" name="text" rows="20" cols="70">{{ data.text }}</textarea>
+<textarea id="text" name="text" rows="20" cols="70">{{ data.text if data.text != None }}</textarea>
 <br>
 <input type="submit" value="Save">
 </form>

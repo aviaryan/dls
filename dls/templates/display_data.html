@@ -21,7 +21,7 @@ Nothing here. Click on the button above to add something.
 {% endif %}
 <!-- text -->
 <h4>Text</h4>
-<pre>{{ data.text }}</pre>
+<pre>{{ data.text if data.text != None }}</pre>
 
 {% endif %}
 
