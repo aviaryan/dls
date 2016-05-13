@@ -7,6 +7,9 @@ app = Flask(__name__)
 app.config.from_object(os.environ.get('CONFIG', 'config.LocalConfig'))
 db = SQLAlchemy(app)
 
+# CONSTANTS
+MAX_UPLOAD_SIZE = 10 * 1024 * 1024  # 10 mb
+
 
 import dls.views
 import dls.models

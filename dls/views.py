@@ -1,4 +1,4 @@
-from dls import app, db
+from dls import app, db, MAX_UPLOAD_SIZE
 from flask import url_for, redirect, request, render_template, make_response, abort
 from models import Data
 from utils import *
@@ -43,7 +43,14 @@ def editData(strId):
 def dataFile(strId):
     if request.method == 'POST':
         file = request.files['file']
-        b64_file = binascii.b2a_base64(file.read())
+        filedata = file.read()
+
+        # if size limit exceeds
+        if len(filedata) > MAX_UPLOAD_SIZE:
+            # TODO: Flash something
+            return redirect(url_for('editData', strId=strId))
+
+        b64_file = binascii.b2a_base64(filedata)
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
             data.filename = file.filename
