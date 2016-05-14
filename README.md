@@ -41,6 +41,13 @@ Then update the DATABASE_URL.
 ```bash
 heroku addons:add heroku-postgresql:dev
 heroku pg:promote HEROKU_POSTGRESQL_COLOR_URL # change DATABASE_URL to heroku's database
+# heroku pg:reset DATABASE_URL --confirm dlus # to reset the DATABASE if needed
+```
+
+Finally sync the heroku database
+
+```bash
+heroku run python manage.py db upgrade
 ```
 
 Done
