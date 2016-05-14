@@ -2,3 +2,4 @@ Flask
 psycopg2
 Flask-SQLAlchemy
 gunicorn
+Flask-Migrate
