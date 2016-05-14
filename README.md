@@ -54,7 +54,6 @@ heroku run migrate
 Done
 
 
-### Thanks
+### Documentation
 
-* https://realpython.com/blog/python/flask-by-example-part-2-postgres-sqlalchemy-and-alembic/
-* http://blog.sahildiwan.com/posts/flask-and-postgresql-app-deployed-on-heroku/
+Visit the homepage (http://dlus.herokuapp.com/) for a brief text on how to use the service. More docs are in [docs](docs) directory.
