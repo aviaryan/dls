@@ -1,5 +1,5 @@
 from dls import app, db, MAX_UPLOAD_SIZE
-from flask import url_for, redirect, request, render_template, make_response, abort, flash
+from flask import url_for, redirect, request, render_template, make_response, abort, flash, Response
 from models import Data
 from utils import *
 import binascii
@@ -73,3 +73,12 @@ def dataFile(strId):
         response = make_response(binascii.a2b_base64(data.fileblob))
         response.headers['Content-Disposition'] = 'attachment; filename=%s' % data.filename
         return response
+
+
+@app.route('/<strId>/text/')
+def dataText(strId):
+    data = Data.query.filter_by(strId=strId).first()
+    if data is None:
+        return Response(response='', status=404)
+    else:
+        return Response(response=data.text, status=200, content_type='text/plain; charset=utf-8')
