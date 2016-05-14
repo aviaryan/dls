@@ -5,7 +5,7 @@
 Send a GET request to `<id>/text`
 
 ```sh
-curl http://dlus.herokuapp.com/flask/text
+> curl http://dlus.herokuapp.com/flask/text
 abcdeff
 hello
 world%

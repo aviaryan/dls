@@ -54,6 +54,6 @@ heroku run migrate
 Done
 
 
-### Documentation
+## Documentation
 
 Visit the homepage (http://dlus.herokuapp.com/) for a brief text on how to use the service. More docs are in [docs](docs) directory.
