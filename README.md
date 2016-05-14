@@ -17,9 +17,14 @@ To run locally, first create the database
 create user project with password 'project';
 create database dls with owner=project;
 ```
-Once database is created, use `bash runserver.sh`.
+Once database is created, create the tables.
 
-One can also use `python runserver.py`.
+```bash
+# python manage.py db migrate # to generate migration file
+python manage.py db upgrade
+```
+
+Then run the server using `bash runserver.sh`. One can also use `python runserver.py`.
 
 
 ## Setting up on Heroku
