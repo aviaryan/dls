@@ -47,7 +47,7 @@ heroku pg:promote HEROKU_POSTGRESQL_COLOR_URL # change DATABASE_URL to heroku's 
 Finally sync the heroku database
 
 ```bash
-heroku run python manage.py db upgrade
+heroku run migrate
 ```
 
 Done
