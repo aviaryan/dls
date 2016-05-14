@@ -1,6 +1,7 @@
 # DLS
 
-Direct Link Service
+Direct Link Service. A pastebin for text and uploading files where you can choose a custom link. Also file and text will be accessible/downloadable from easy to 
+remember direct links. http://dlus.herokuapp.com/ 
 
 ```
 http://bit.do/dlus
