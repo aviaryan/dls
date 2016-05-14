@@ -44,7 +44,7 @@ def flash_to_editData(msg, strId):
     return redirect(url_for('editData', strId=strId))
 
 
-@app.route('/<strId>/file/', methods=['GET', 'POST'])
+@app.route('/<strId>/file', methods=['GET', 'POST'], strict_slashes=False)
 def dataFile(strId):
     if request.method == 'POST':
         file = request.files['file']
@@ -75,7 +75,7 @@ def dataFile(strId):
         return response
 
 
-@app.route('/<strId>/text/')
+@app.route('/<strId>/text', strict_slashes=False)
 def dataText(strId):
     data = Data.query.filter_by(strId=strId).first()
     if data is None:
