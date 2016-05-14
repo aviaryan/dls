@@ -7,3 +7,6 @@ class Data(db.Model):
     text = db.Column(db.Text)
     fileblob = db.Column(db.Text)
     filename = db.Column(db.String(100))
+
+    def as_dict(self):
+        return {c.name: getattr(self, c.name) for c in self.__table__.columns}

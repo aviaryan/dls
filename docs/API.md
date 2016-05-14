@@ -32,3 +32,12 @@ curl -J -O http://dlus.herokuapp.com/flask/file
 ```
 
 Source - http://superuser.com/a/301051
+
+
+### Getting URL status as JSON
+
+Send a GET request to `<id>.json`
+
+```sh
+curl http://dlus.herokuapp.com/flask.json
+```

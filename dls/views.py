@@ -1,5 +1,5 @@
 from dls import app, db, MAX_UPLOAD_SIZE
-from flask import url_for, redirect, request, render_template, make_response, abort, flash, Response
+from flask import url_for, redirect, request, render_template, make_response, abort, flash, Response, jsonify
 from models import Data
 from utils import *
 import binascii
@@ -82,3 +82,14 @@ def dataText(strId):
         return Response(response='', status=404)
     else:
         return Response(response=data.text, status=200, content_type='text/plain; charset=utf-8')
+
+
+@app.route('/<strId>.json')
+def dataJSON(strId):
+    data = Data.query.filter_by(strId=strId).first()
+    if data is None:
+        return jsonify(), 404
+    else:
+        json = data.as_dict()
+        del json['fileblob']
+        return jsonify(**json)
