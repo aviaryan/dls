@@ -21,6 +21,7 @@ So I made this service so that anyone can put a paste or upload a file to a url 
 
 Then there are all sorts of ways to fetch information from the url; see [API docs](#api) for them.
 Above all, I wanted to take up a sample project to practise Flask so that was it.
+**PS** - If you like the idea, please [vote here](https://github.com/aviaryan/dls/issues/15) so that I can make up my mind to buy a short domain.
 
 ## Technologies used
 
