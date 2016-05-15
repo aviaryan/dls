@@ -15,7 +15,8 @@
 {% endif %}
 <span class="filename">{{ data.filename }}</span>
 {% if data.filename %}
-  (<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>)
+  <small>({{ data.filesize|filesize }})</small>
+  [<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>]
 {% endif %}
 </div>
 

@@ -64,9 +64,10 @@ def dataFile(strId):
             data.filename = file.filename
             data.fileblob = b64_file
             data.filetime = getCurTime()
+            data.filesize = len(filedata)
         else:
             data = Data(strId=strId, filename=file.filename, fileblob=b64_file,
-                        filetime=getCurTime())
+                        filetime=getCurTime(), filesize=len(filedata))
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('serve', strId=strId))

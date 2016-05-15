@@ -22,3 +22,16 @@ def filter_timeago(time):
         return fmt % (secs, 'hrs')
     else:
         return '%dd %dh ago' % (int(secs / 24), int(secs % 24))
+
+
+@app.template_filter('filesize')
+def filter_filesize(size_bytes):
+    sz = size_bytes
+    fmt = '%d %s'
+    if sz < 1024:
+        return fmt % (sz, 'B')
+    sz /= 1024
+    if sz < 1024:
+        return fmt % (sz, 'KB')
+    sz /= 1024
+    return fmt % (sz, 'MB')
