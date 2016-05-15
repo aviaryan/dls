@@ -7,9 +7,9 @@
 			"working_dir": "${project_path}"
 		}
 	],
-    "settings": {
-        "python_interpreter": "~/anaconda2/bin/python"
-    },
+	"settings": {
+		"python_interpreter": "~/anaconda2/bin/python"
+	},
 	"folders":
 	[
 		{

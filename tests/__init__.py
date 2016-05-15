@@ -14,3 +14,6 @@ class DLSTestCase(unittest.TestCase):
         db.session.remove()
         db.drop_all()
         os.unlink('test.sqlite3')
+
+    def add_text(self, url, text):
+        return self.app.post('/flask/edit/', data={'text': text}, follow_redirects=True)
