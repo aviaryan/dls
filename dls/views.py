@@ -1,5 +1,6 @@
 from dls import app, db, MAX_UPLOAD_SIZE
-from flask import url_for, redirect, request, render_template, make_response, abort, flash, Response, jsonify
+from flask import url_for, redirect, request, render_template, make_response, \
+    abort, flash, Response, jsonify
 from models import Data
 from utils import *
 import binascii
@@ -27,8 +28,9 @@ def editData(strId):
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
             data.text = request.form['text']
+            data.texttime = getCurTime()
         else:
-            data = Data(strId=strId, text=request.form['text'])
+            data = Data(strId=strId, text=request.form['text'], texttime = getCurTime())
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('serve', strId=strId))
@@ -61,8 +63,10 @@ def dataFile(strId):
         if data is not None:
             data.filename = file.filename
             data.fileblob = b64_file
+            data.filetime = getCurTime()
         else:
-            data = Data(strId=strId, filename=file.filename, fileblob=b64_file)
+            data = Data(strId=strId, filename=file.filename, fileblob=b64_file,
+                        filetime=getCurTime())
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('serve', strId=strId))

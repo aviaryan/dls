@@ -5,16 +5,23 @@
 <br><br>
 
 {% if type==0 %}
-Nothing here. Click on the button above to add something.
+  Nothing here. Click on the button above to add something.
 {% else %}
 <!-- data -->
 <h4>File</h4>
+{% if data.filetime != None %}
+  <small>Last Updated: {{ data.filetime }}</small><br>
+{% endif %}
 <span class="filename">{{ data.filename }}</span>
 {% if data.filename %}
-(<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>)
+  (<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>)
 {% endif %}
+
 <!-- text -->
 <h4>Text</h4>
+{% if data.texttime != None %}
+  <small>Last Updated: {{ data.texttime }}</small>
+{% endif %}
 <pre>{{ data.text if data.text != None }}</pre>
 
 {% endif %}
