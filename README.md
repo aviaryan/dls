@@ -10,50 +10,16 @@ http://bit.do/dlus000
 https://is.gd/dlus000
 ```
 
-## Setting up locally
+## Technologies used
 
-To run locally, first create the database
+* Python 2.7
+* Flask
+* SQLAlchemy (and Alembic)
 
-```sql
-create user project with password 'project';
-create database dls with owner=project;
-```
-Once database is created, create the tables.
+## Setup (Deployment)
 
-```bash
-# python manage.py db migrate # to generate migration file
-python manage.py db upgrade
-```
+See the [setup instructions](docs/SETUP.md)
 
-Then run the server using `bash runserver.sh`. One can also use `python runserver.py`.
+## API
 
-
-## Setting up on Heroku
-
-First set up env vars for this project.
-
-```bash
-heroku config:set CONFIG=config.HerokuConfig 
-heroku config:set DATABASE_URL=postgresql://localhost/dls 
-```
-
-Then update the DATABASE_URL.
-
-```bash
-heroku addons:add heroku-postgresql:dev
-heroku pg:promote HEROKU_POSTGRESQL_COLOR_URL # change DATABASE_URL to heroku's database
-# heroku pg:reset DATABASE_URL --confirm dlus # to reset the DATABASE if needed
-```
-
-Finally sync the heroku database
-
-```bash
-heroku run migrate
-```
-
-Done
-
-
-## Documentation
-
-Visit the homepage (http://dlus.herokuapp.com/) for a brief text on how to use the service. More docs are in [docs](docs) directory.
+See API [docs](docs/API.md).
