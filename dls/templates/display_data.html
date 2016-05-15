@@ -8,21 +8,25 @@
   Nothing here. Click on the button above to add something.
 {% else %}
 <!-- data -->
+<div style="margin-bottom: 2.5em;">
 <h4>File</h4>
 {% if data.filetime != None %}
-  <small>Last Updated: {{ data.filetime|datetime }} ({{ data.filetime|timeago }})</small><br>
+  <div class="updt_time"><small>Last Updated: {{ data.filetime|datetime }} ({{ data.filetime|timeago }})</small></div>
 {% endif %}
 <span class="filename">{{ data.filename }}</span>
 {% if data.filename %}
   (<a href="{{ url_for('dataFile', strId=data.strId) }}">Download</a>)
 {% endif %}
+</div>
 
 <!-- text -->
+<div>
 <h4>Text</h4>
 {% if data.texttime != None %}
-  <small>Last Updated: {{ data.texttime|datetime }} ({{ data.texttime|timeago }})</small>
+  <div class="updt_time"><small>Last Updated: {{ data.texttime|datetime }} ({{ data.texttime|timeago }})</small></div>
 {% endif %}
 <pre>{{ data.text if data.text != None }}</pre>
+</div>
 
 {% endif %}
 {% endblock %}
