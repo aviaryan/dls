@@ -58,3 +58,13 @@ pre {
 	margin-bottom: 0.6em;
 	color: #666666;
 }
+
+/** lock **/
+.lock {
+	float: right;
+}
+
+.data_text {
+	margin-bottom: 2.5em;
+	margin-top: 3em;
+}

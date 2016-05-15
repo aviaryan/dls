@@ -2,7 +2,7 @@ from dls import db
 from datetime import datetime, timedelta
 
 
-TIMELIMIT = 36 * 3600
+TIMELIMIT = 24 * 3600
 
 
 class Data(db.Model):

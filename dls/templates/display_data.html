@@ -1,7 +1,7 @@
 {% extends "base.html" %}
 {% block pagetitle %}{{ data.strId }}{% endblock %}
 {% block content %}
-<a href="edit"><button class="edit">Update</button></a>
+<a href="edit"><button class="edit" {% if type==1 and data.is_locked() %} disabled="disabled" {% endif %}>Update</button></a>
 <br><br>
 
 {% if type==0 %}
@@ -19,7 +19,7 @@
 </div>
 
 <!-- data -->
-<div style="margin-bottom: 2.5em;">
+<div class="data_text">
 <h4>File</h4>
 {% if data.filetime != None %}
   <div class="updt_time"><small>Last Updated: {{ data.filetime|datetime }} ({{ data.filetime|timeago }})</small></div>
