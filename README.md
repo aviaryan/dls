@@ -23,3 +23,11 @@ See the [setup instructions](docs/SETUP.md)
 ## API
 
 See API [docs](docs/API.md).
+
+## Testing
+
+```bash
+python -m unittest discover tests
+# or
+nosetests
+```
