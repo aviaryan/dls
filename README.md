@@ -1,6 +1,8 @@
 # DLS
 
 [![Travis branch](https://img.shields.io/travis/aviaryan/dls/master.svg?maxAge=2592000)](https://travis-ci.org/aviaryan/dls/)
+[![Code Climate](https://codeclimate.com/github/aviaryan/dls/badges/gpa.svg)](https://codeclimate.com/github/aviaryan/dls)
+[![Issue Count](https://codeclimate.com/github/aviaryan/dls/badges/issue_count.svg)](https://codeclimate.com/github/aviaryan/dls)
 
 Direct Link Service. A pastebin for text and uploading files where you can choose a custom link. Also file and text will be accessible/downloadable from easy to 
 remember direct links. http://dlus.herokuapp.com/ 
