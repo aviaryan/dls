@@ -110,7 +110,10 @@ def lock(strId):
     if data is None:
         abort(404)
     else:
-        data.locktime = getCurTime()
-        db.session.add(data)
-        db.session.commit()
+        if strId in ['flask', 'foraman']:  # well
+            flash('This URL is not lockable :p')
+        else:
+            data.locktime = getCurTime()
+            db.session.add(data)
+            db.session.commit()
         return redirect(url_for('serve', strId=strId))

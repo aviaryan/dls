@@ -41,6 +41,7 @@ pre {
 .errors {
 	width: 100%;
 	padding: 0.3em 0.5em 0.1em 0.5em;
+	margin-bottom: 1em;
 	background-color: #C9E4EB;
 }
 

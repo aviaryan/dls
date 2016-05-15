@@ -6,6 +6,22 @@
 </head>
 <body>
 {% block header %}<div class="header"><h1><a href="/">DLS</a></h1></div>{% endblock %}
+
+{% block errors %}
+{% with messages = get_flashed_messages() %}
+  {% if messages %}
+  <div class="errors">
+  <b>Errors</b>
+  <ol>
+    {% for message in messages %}
+      <li>{{ message }}</li>
+    {% endfor %}
+  </ol>
+  </div>
+  {% endif %}
+{% endwith %}
+{% endblock %}
+
 {% block content %}{% endblock %}
 </body>
 </html>
