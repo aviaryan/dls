@@ -34,3 +34,6 @@ class Data(db.Model):
                     datetime.now()).total_seconds()
         else:
             return 0
+
+    def is_editable(self):
+        return (not self.is_locked())

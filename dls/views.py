@@ -22,11 +22,18 @@ def serve(strId):
     return render_template('display_data.html', type=status, data=getData(strId))
 
 
+def flash_to_editData(msg, strId):
+    flash(msg, 'error')
+    return redirect(url_for('editData', strId=strId))
+
+
 @app.route('/<strId>/edit/', methods=['GET', 'POST'])
 def editData(strId):
     if request.method == 'POST':
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
+            if not data.is_editable():
+                return flash_to_editData('This URL is locked', strId)
             data.text = request.form['text']
             data.texttime = getCurTime()
         else:
@@ -39,11 +46,6 @@ def editData(strId):
         if data is None:
             data = {'strId': strId}
         return render_template('edit_form.html', data=data)
-
-
-def flash_to_editData(msg, strId):
-    flash(msg, 'error')
-    return redirect(url_for('editData', strId=strId))
 
 
 @app.route('/<strId>/file', methods=['GET', 'POST'], strict_slashes=False)
@@ -61,6 +63,8 @@ def dataFile(strId):
         b64_file = binascii.b2a_base64(filedata)
         data = Data.query.filter_by(strId=strId).first()
         if data is not None:
+            if not data.is_editable():
+                return flash_to_editData('This URL is locked', strId)
             data.filename = file.filename
             data.fileblob = b64_file
             data.filetime = getCurTime()
