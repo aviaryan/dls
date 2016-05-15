@@ -10,7 +10,7 @@
 <!-- data -->
 <h4>File</h4>
 {% if data.filetime != None %}
-  <small>Last Updated: {{ data.filetime }}</small><br>
+  <small>Last Updated: {{ data.filetime|datetime }} ({{ data.filetime|timeago }})</small><br>
 {% endif %}
 <span class="filename">{{ data.filename }}</span>
 {% if data.filename %}
@@ -20,7 +20,7 @@
 <!-- text -->
 <h4>Text</h4>
 {% if data.texttime != None %}
-  <small>Last Updated: {{ data.texttime }}</small>
+  <small>Last Updated: {{ data.texttime|datetime }} ({{ data.texttime|timeago }})</small>
 {% endif %}
 <pre>{{ data.text if data.text != None }}</pre>
 

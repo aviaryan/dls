@@ -13,4 +13,4 @@ def getData(strId):
 
 
 def getCurTime():
-    return datetime.utcnow()
+    return datetime.now()
