@@ -35,3 +35,13 @@ def filter_filesize(size_bytes):
         return fmt % (sz, 'KB')
     sz /= 1024
     return fmt % (sz, 'MB')
+
+
+@app.template_filter('timerange')
+def filter_str_timerange(secs):
+    if secs > 3600:
+        return '%dh %dm' % (secs / 3600, (secs % 3600) / 60)
+    elif secs > 60:
+        return '%dm %ds' % (secs / 60, secs % 60)
+    else:
+        return '%ds' % secs

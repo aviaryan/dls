@@ -98,3 +98,15 @@ def dataJSON(strId):
         json = data.as_dict()
         del json['fileblob']
         return jsonify(**json)
+
+
+@app.route('/<strId>/lock', methods=['POST'])
+def lock(strId):
+    data = Data.query.filter_by(strId=strId).first()
+    if data is None:
+        abort(404)
+    else:
+        data.locktime = getCurTime()
+        db.session.add(data)
+        db.session.commit()
+        return redirect(url_for('serve', strId=strId))

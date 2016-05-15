@@ -1,4 +1,8 @@
 from dls import db
+from datetime import datetime, timedelta
+
+
+TIMELIMIT = 36 * 3600
 
 
 class Data(db.Model):
@@ -10,6 +14,23 @@ class Data(db.Model):
     filesize = db.Column(db.Integer)
     filetime = db.Column(db.DateTime)
     texttime = db.Column(db.DateTime)
+    locktime = db.Column(db.DateTime)
 
     def as_dict(self):
         return {c.name: getattr(self, c.name) for c in self.__table__.columns}
+
+    def is_locked(self):
+        if self.locktime is None:
+            return False
+        timedelta = datetime.now() - self.locktime
+        if timedelta.total_seconds() > TIMELIMIT:
+            return False
+        else:
+            return True
+
+    def time_remaining(self):
+        if self.is_locked():
+            return ((self.locktime + timedelta(seconds=TIMELIMIT)) -
+                    datetime.now()).total_seconds()
+        else:
+            return 0

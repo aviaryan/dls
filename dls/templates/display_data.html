@@ -7,6 +7,17 @@
 {% if type==0 %}
   Nothing here. Click on the button above to add something.
 {% else %}
+<!-- lock -->
+<div class="lock">
+{% if data.is_locked() %}
+<button disabled="disabled">Unlocking in {{ data.time_remaining()|timerange }}</button>
+{% else %}
+<form action="lock" method="POST">
+  <input type="submit" name="submit" value="Lock">
+</form>
+{% endif %}
+</div>
+
 <!-- data -->
 <div style="margin-bottom: 2.5em;">
 <h4>File</h4>
