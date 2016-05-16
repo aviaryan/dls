@@ -21,6 +21,14 @@ class TestInterface(DLSTestCase):
         page = self.add_text('flask', 'zoro')
         self.assertTrue('zoro' in page.data)
 
+    def test_locked(self):
+        page = self.add_text('cg', 'lelouch')
+        self.assertTrue('Lock' in page.data)
+        page = self.app.post('/cg/lock', follow_redirects=True)
+        self.assertFalse('Lock' in page.data)
+        page = self.add_text('cg', 'rolo')
+        self.assertTrue('lelouch' in page.data)
+
 
 if __name__ == '__main__':
     unittest.main()

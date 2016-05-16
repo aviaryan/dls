@@ -37,7 +37,7 @@ def editData(strId):
             data.text = request.form['text']
             data.texttime = getCurTime()
         else:
-            data = Data(strId=strId, text=request.form['text'], texttime = getCurTime())
+            data = Data(strId=strId, text=request.form['text'], texttime=getCurTime())
         db.session.add(data)
         db.session.commit()
         return redirect(url_for('serve', strId=strId))

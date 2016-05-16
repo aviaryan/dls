@@ -16,4 +16,4 @@ class DLSTestCase(unittest.TestCase):
         os.unlink('test.sqlite3')
 
     def add_text(self, url, text):
-        return self.app.post('/flask/edit/', data={'text': text}, follow_redirects=True)
+        return self.app.post('/%s/edit/' % url, data={'text': text}, follow_redirects=True)
