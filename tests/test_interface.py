@@ -1,7 +1,7 @@
 from tests import DLSTestCase, unittest
 
 
-class TestInterface(DLSTestCase):
+class TestInterfaceMain(DLSTestCase):
     def test_empty_url(self):
         page = self.app.get('/flask/')
         self.assertTrue('Nothing here' in page.data)
@@ -28,6 +28,22 @@ class TestInterface(DLSTestCase):
         self.assertFalse('Lock' in page.data)
         page = self.add_text('cg', 'rolo')
         self.assertTrue('lelouch' in page.data)
+
+
+# nosetests tests.test_interface:TestInterfaceFile
+class TestInterfaceFile(DLSTestCase):
+    def test_upload(self):
+        page = self.upload('flask', 10)
+        self.assertTrue('10' in page.data)
+        page = self.app.get('/flask/file')
+        self.assertEqual(len(page.data), 10)
+        self.assertEqual(page.status_code, 200)
+
+    def test_upload_large(self):
+        page = self.upload('flask', 1024 * 1024 * 100)  # 100 mb
+        self.assertTrue('Upload' in page.data)
+        page = self.app.get('/flask/file')
+        self.assertEqual(page.status_code, 404, msg=page.data)
 
 
 if __name__ == '__main__':

@@ -1,6 +1,7 @@
 import unittest
 import os
 from dls import app, db
+from StringIO import StringIO
 
 
 class DLSTestCase(unittest.TestCase):
@@ -17,3 +18,10 @@ class DLSTestCase(unittest.TestCase):
 
     def add_text(self, url, text):
         return self.app.post('/%s/edit/' % url, data={'text': text}, follow_redirects=True)
+
+    def upload(self, url, size):
+        return self.app.post(
+            '/%s/file' % url,
+            data={'file': (StringIO('a' * size), 'test.txt')},
+            follow_redirects=True
+        )

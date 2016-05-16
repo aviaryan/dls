@@ -13,7 +13,7 @@ def index():
 
 @app.errorhandler(404)
 def page_not_found(error):
-    return '404. This page does not exist'
+    return '404. This page does not exist', 404
 
 
 @app.route('/<strId>/')
@@ -77,7 +77,7 @@ def dataFile(strId):
         return redirect(url_for('serve', strId=strId))
     else:
         data = Data.query.filter_by(strId=strId).first()
-        if data is None or data.filename == '':
+        if data is None or not data.filename:
             abort(404)
         response = make_response(binascii.a2b_base64(data.fileblob))
         response.headers['Content-Disposition'] = 'attachment; filename=%s' % data.filename
