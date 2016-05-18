@@ -2,9 +2,12 @@
 
 [![Build Status](https://travis-ci.org/aviaryan/dls.svg?branch=master)](https://travis-ci.org/aviaryan/dls)
 [![Code Climate](https://codeclimate.com/github/aviaryan/dls/badges/gpa.svg)](https://codeclimate.com/github/aviaryan/dls)
-[![Issue Count](https://codeclimate.com/github/aviaryan/dls/badges/issue_count.svg)](https://codeclimate.com/github/aviaryan/dls)
 [![Codacy Badge](https://api.codacy.com/project/badge/Grade/bfa45683aab140a2b40ae51a54baf891)](https://www.codacy.com/app/aviaryan/dls)
 [![codecov](https://codecov.io/gh/aviaryan/dls/branch/master/graph/badge.svg)](https://codecov.io/gh/aviaryan/dls)
+
+[![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+
+[![Launch on OpenShift](http://launch-shifter.rhcloud.com/button.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Faviaryan%2Fdls.git&name=dls)
 
 Direct Link Service. A pastebin for text and uploading files where you can choose a custom link. Also file and text will be accessible/downloadable from easy to
 remember direct links. http://dls.aviaryan.in/
