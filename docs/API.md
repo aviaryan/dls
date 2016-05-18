@@ -5,7 +5,7 @@
 Send a GET request to `<id>/text`
 
 ```sh
-> curl http://dlus.herokuapp.com/flask/text
+> curl http://dls.aviaryan.in/flask/text
 abcdeff
 hello
 world%
@@ -16,19 +16,19 @@ world%
 Using wget or curl, send a request to `<id>/file`
 
 ```sh
-wget http://dlus.herokuapp.com/flask/file -O file.png
+wget http://dls.aviaryan.in/flask/file -O file.png
 ```
 
 To have the output file automatically named according to the upload file name, try the following -
 
 ```sh
-wget --content-disposition http://dlus.herokuapp.com/flask/file
+wget --content-disposition http://dls.aviaryan.in/flask/file
 ```
 
 Using curl,
 
 ```sh
-curl -J -O http://dlus.herokuapp.com/flask/file
+curl -J -O http://dls.aviaryan.in/flask/file
 ```
 
 Source - http://superuser.com/a/301051
@@ -39,5 +39,5 @@ Source - http://superuser.com/a/301051
 Send a GET request to `<id>.json`
 
 ```sh
-curl http://dlus.herokuapp.com/flask.json
+curl http://dls.aviaryan.in/flask.json
 ```

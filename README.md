@@ -7,7 +7,7 @@
 [![codecov](https://codecov.io/gh/aviaryan/dls/branch/master/graph/badge.svg)](https://codecov.io/gh/aviaryan/dls)
 
 Direct Link Service. A pastebin for text and uploading files where you can choose a custom link. Also file and text will be accessible/downloadable from easy to
-remember direct links. http://dlus.herokuapp.com/
+remember direct links. http://dls.aviaryan.in/
 
 ## Why?
 
@@ -15,8 +15,8 @@ Currently, the options available to quickly share a text or file are pastebin ty
 The links are impossible to remember and the only way to retrieve data back from the link is to first store the link somewhere so that it can be recalled.
 So I made this service so that anyone can put a paste or upload a file to a url of their choice. Eg >
 
-* [/foraman](http://dlus.herokuapp.com/foraman)
-* [/networkexam](http://dlus.herokuapp.com/networkexam)
+* [/foraman](http://dls.aviaryan.in/foraman)
+* [/networkexam](http://dls.aviaryan.in/networkexam)
 
 Then there are all sorts of ways to fetch information from the url; see [API docs](#api) for them.
 Above all, I wanted to take up a sample project to practise Flask so that was it.
@@ -25,7 +25,7 @@ Above all, I wanted to take up a sample project to practise Flask so that was it
 
 ## Tutorial (Guide)
 
-See the [homepage](http://dlus.herokuapp.com/#using)
+See the [homepage](http://dls.aviaryan.in/#using)
 
 ## Technologies used
 
