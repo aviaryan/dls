@@ -45,6 +45,13 @@ class TestInterfaceFile(DLSTestCase):
         page = self.app.get('/flask/file')
         self.assertEqual(page.status_code, 404, msg=page.data)
 
+    def test_upload_locked(self):
+        self.upload('cg', 11)
+        self.app.post('/cg/lock')
+        page = self.upload('cg', 23)
+        self.assertTrue('Upload' in page.data, msg=page.data)
+        self.assertTrue('Errors' in page.data)
+
 
 if __name__ == '__main__':
     unittest.main()
