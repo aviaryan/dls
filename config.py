@@ -23,5 +23,12 @@ class HerokuConfig(ProductionConfig):
     DEBUG = True
 
 
+class OpenShiftConfig(ProductionConfig):
+    try:
+        SQLALCHEMY_DATABASE_URI = os.environ['OPENSHIFT_POSTGRESQL_DB_URL']
+    except KeyError:
+        print "OpenShift Database not found"
+
+
 class SQLiteConfig(Config):
     SQLALCHEMY_DATABASE_URI = 'sqlite:///../database.sqlite3'

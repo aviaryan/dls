@@ -40,3 +40,21 @@ Finally sync the heroku database
 heroku run migrate
 ```
 Done
+
+
+## On OpenShift
+
+Create the app and add postgresql db.
+
+```bash
+# create it in a different location
+rhc app create dls python-2.7
+rhc cartridge add postgresql-9.2 -a dls
+```
+
+Then set the env vars.
+
+```bash
+rhc env set CONFIG=config.OpenShiftConfig -a dls
+rhc env list -a dls  # list the vars
+```
