@@ -48,13 +48,21 @@ Create the app and add postgresql db.
 
 ```bash
 # create it in a different location
-rhc app create dls python-2.7.11
+rhc app create dls python-2.7
 rhc cartridge add postgresql-9.2 -a dls
 ```
-
 Then set the env vars.
 
 ```bash
 rhc env set CONFIG=config.OpenShiftConfig -a dls
 rhc env list -a dls  # list the vars
 ```
+Finally sync the database.
+
+```bash
+rhc ssh -a dls
+# shell opens
+cd app-root/repo
+python manage.py db upgrade
+```
+Done.
