@@ -6,7 +6,6 @@
 [![codecov](https://codecov.io/gh/aviaryan/dls/branch/master/graph/badge.svg)](https://codecov.io/gh/aviaryan/dls)
 
 [![Deploy](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
-
 [![Launch on OpenShift](http://launch-shifter.rhcloud.com/button.svg)](https://openshift.redhat.com/app/console/application_type/custom?cartridges%5B%5D=python-2.7&initial_git_url=https%3A%2F%2Fgithub.com%2Faviaryan%2Fdls.git&name=dls)
 
 Direct Link Service. A pastebin for text and uploading files where you can choose a custom link. Also file and text will be accessible/downloadable from easy to
