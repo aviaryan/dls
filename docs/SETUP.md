@@ -48,7 +48,7 @@ Create the app and add postgresql db.
 
 ```bash
 # create it in a different location
-rhc app create dls python-2.7
+rhc app create dls python-2.7.11
 rhc cartridge add postgresql-9.2 -a dls
 ```
 

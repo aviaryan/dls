@@ -1,5 +1,6 @@
 Flask
 psycopg2
+SQLAlchemy
 Flask-SQLAlchemy
 gunicorn
 Flask-Migrate
