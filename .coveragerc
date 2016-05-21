@@ -1,0 +1,8 @@
+[run]
+source = dls
+
+[report]
+omit =
+    */migrations/*
+    */tests/*
+
